@@ -1,0 +1,2100 @@
+:root {
+  --bleu-nuit: #101319;
+  --bleu-profond: #0f1626;
+  --cuivre: #d6b38a;
+  --cuivre-fonce: #c8894e;
+  --bronze: #b08452;
+  --ivoire: #e7dfd6;
+  --ivoire-clair: #f6efe5;
+  --rouge-galerie: #840f0c;
+  --rouge-expo: #5c0a14;
+  --marine: #263449;
+  --gris-texte: #3c3e46;
+  --ligne: #3a404e;
+  --erreur: #f0837c;
+  --blanc: #ffffff;
+
+  --police-titre: "Playfair Display", Georgia, "Times New Roman", serif;
+  --police-texte: "Montserrat", Arial, Helvetica, sans-serif;
+
+  --transition: 0.3s ease;
+  --hauteur-entete: 139px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--bleu-nuit);
+  color: var(--ivoire);
+  font-family: var(--police-texte);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+dd,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+section[id] {
+  scroll-margin-top: var(--hauteur-entete);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cuivre);
+  outline-offset: 3px;
+}
+
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.lien-evitement {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 18px;
+  background-color: var(--cuivre);
+  color: var(--bleu-profond);
+  font-weight: 600;
+  transition: top var(--transition);
+}
+
+.lien-evitement:focus {
+  top: 12px;
+}
+
+.surtitre {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.filet {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--cuivre);
+}
+
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 1px solid var(--cuivre);
+  background-color: transparent;
+  color: var(--cuivre);
+  font-family: var(--police-texte);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.bouton:hover,
+.bouton:focus-visible {
+  background-color: var(--cuivre);
+  color: var(--bleu-profond);
+}
+
+.bouton:active {
+  transform: translateY(1px);
+}
+
+.bouton--grand {
+  padding: 12px 21px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.bouton--marine {
+  border-color: var(--marine);
+  color: var(--marine);
+}
+
+.bouton--marine:hover,
+.bouton--marine:focus-visible {
+  background-color: var(--marine);
+  color: var(--blanc);
+}
+
+.bouton--plein {
+  width: 100%;
+  padding: 15px 20px;
+  border-color: var(--cuivre-fonce);
+  background-color: var(--cuivre-fonce);
+  color: var(--bleu-profond);
+}
+
+.bouton--plein:hover,
+.bouton--plein:focus-visible {
+  border-color: var(--cuivre);
+  background-color: var(--cuivre);
+}
+
+.lien-fleche {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cuivre);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: gap var(--transition), color var(--transition);
+}
+
+.lien-fleche:hover,
+.lien-fleche:focus-visible {
+  gap: 14px;
+  color: var(--blanc);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--blanc);
+}
+
+.logo__symbole {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  transition: transform 0.6s ease;
+}
+
+.logo:hover .logo__symbole {
+  transform: rotate(-8deg);
+}
+
+.logo__texte {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo__nom {
+  font-family: var(--police-titre);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.logo__sous-titre {
+  margin-top: 4px;
+  color: var(--cuivre);
+  font-size: 6px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  white-space: nowrap;
+}
+
+.js .apparition {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js .apparition.est-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes monter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rebond {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes ouverture-fiche {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fondu {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bleu-nuit);
+  transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+.entete__barre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 25px 24px;
+}
+
+.entete__inscription {
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+
+.entete__inscription .texte-long {
+  display: none;
+}
+
+.navigation {
+  border-top: 1px solid rgba(231, 223, 214, 0.18);
+  border-bottom: 1px solid rgba(231, 223, 214, 0.18);
+}
+
+.navigation__liste {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px;
+  overflow-x: auto;
+}
+
+.navigation__lien {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  color: var(--blanc);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.navigation__lien::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--cuivre);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.navigation__lien:hover,
+.navigation__lien:focus-visible,
+.navigation__lien[aria-current="true"],
+.navigation__lien[aria-current="page"] {
+  color: var(--cuivre);
+}
+
+.navigation__lien:hover::after,
+.navigation__lien:focus-visible::after,
+.navigation__lien[aria-current="true"]::after,
+.navigation__lien[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.accueil {
+  background-color: var(--bleu-nuit);
+}
+
+.accueil__contenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 46px 24px 38px;
+}
+
+.accueil__surtitre {
+  color: var(--blanc);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  animation: monter 0.9s ease both;
+}
+
+.accueil__titre {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.4;
+  animation: monter 0.9s 0.15s ease both;
+}
+
+.accueil__titre span {
+  display: block;
+  color: var(--cuivre);
+}
+
+.accueil__accroche {
+  color: var(--ivoire);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  animation: monter 0.9s 0.3s ease both;
+}
+
+.accueil .bouton {
+  animation: monter 0.9s 0.45s ease both;
+}
+
+.accueil__infos {
+  color: var(--ivoire);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  animation: monter 0.9s 0.6s ease both;
+}
+
+.accueil__defiler {
+  display: none;
+}
+
+.accueil__image {
+  height: 300px;
+  background: url("../images/hero-galerie.jpg") 78% center / cover no-repeat;
+}
+
+.oeuvres {
+  padding: 56px 24px;
+  background-color: var(--rouge-galerie);
+}
+
+.oeuvres__entete {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.oeuvres__surtitre {
+  color: var(--ivoire);
+}
+
+.oeuvres__titre {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.oeuvres__intro {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.oeuvres__indication {
+  margin-top: 4px;
+  color: var(--ivoire);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.oeuvres__nombre {
+  margin-top: -12px;
+  color: rgba(231, 223, 214, 0.75);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.oeuvres__grille {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 22px;
+  margin-top: 32px;
+}
+
+.oeuvre {
+  position: relative;
+  display: block;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.oeuvre img {
+  width: 100%;
+  aspect-ratio: 660 / 732;
+  object-fit: cover;
+}
+
+.oeuvre::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 2px solid var(--cuivre);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.oeuvre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.oeuvre__bandeau {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  background-color: rgba(15, 22, 38, 0.85);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.oeuvre__titre {
+  color: var(--blanc);
+  font-family: var(--police-texte);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.oeuvre__voir {
+  color: var(--cuivre);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.oeuvre:hover::before,
+.oeuvre:focus-visible::before,
+.oeuvre:hover::after,
+.oeuvre:focus-visible::after,
+.oeuvre:hover .oeuvre__bandeau,
+.oeuvre:focus-visible .oeuvre__bandeau {
+  opacity: 1;
+  transform: none;
+}
+
+.oeuvre:focus-visible {
+  outline: none;
+}
+
+.oeuvres__artistes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.oeuvres__artistes .surtitre {
+  font-size: 9px;
+  letter-spacing: 0.26em;
+}
+
+.oeuvres__noms {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.oeuvres__noms li {
+  display: inline;
+}
+
+.oeuvres__noms li + li::before {
+  content: "\00a0\00a0·\00a0\00a0";
+}
+
+.oeuvres__artistes .filet {
+  width: 120px;
+  margin-top: 6px;
+  opacity: 0.6;
+}
+
+.galerie {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 24px 72px;
+  background: linear-gradient(90deg, rgba(246, 239, 229, 0.94) 0%, rgba(246, 239, 229, 0.9) 55%, rgba(246, 239, 229, 0.82) 73%, rgba(246, 239, 229, 0.1) 100%), url("../images/galerie-lumineuse.jpg") right center / auto 100% no-repeat;
+  background-color: var(--ivoire-clair);
+  color: var(--gris-texte);
+}
+
+.galerie__texte {
+  display: flex;
+  flex-direction: column;
+}
+
+.galerie__surtitre {
+  color: var(--bronze);
+}
+
+.galerie__titre {
+  margin-top: 14px;
+  color: var(--marine);
+  font-family: var(--police-titre);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.galerie__sous-titre {
+  margin-top: 14px;
+  color: var(--marine);
+  font-family: var(--police-titre);
+  font-size: 19px;
+  font-style: italic;
+}
+
+.galerie__portrait {
+  position: relative;
+  margin: 24px 12px 0 0;
+}
+
+.galerie__cadre {
+  position: relative;
+}
+
+.galerie__cadre::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--bronze);
+}
+
+.galerie__portrait img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 400 / 497;
+  object-fit: cover;
+}
+
+.galerie__portrait figcaption {
+  margin-top: 30px;
+  color: var(--gris-texte);
+  font-family: var(--police-titre);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.galerie__presentation {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.galerie__roles {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.role {
+  padding-top: 12px;
+  border-top: 2px solid var(--cuivre-fonce);
+  border-image: linear-gradient(90deg, var(--cuivre-fonce) 28px, transparent 28px) 1;
+}
+
+.role__titre {
+  color: var(--marine);
+  font-family: var(--police-titre);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.role__texte {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.galerie .bouton {
+  margin-top: 30px;
+}
+
+.expositions {
+  position: relative;
+  padding: 56px 24px;
+  background-color: var(--rouge-expo);
+}
+
+.expositions__statue {
+  display: none;
+}
+
+.expositions__titre {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.expositions__intro {
+  margin-top: 12px;
+  color: var(--ivoire);
+  font-family: var(--police-titre);
+  font-size: 17px;
+  font-style: italic;
+}
+
+.expositions__liste {
+  display: grid;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.exposition {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid rgba(214, 179, 138, 0.3);
+  background-color: rgba(20, 8, 16, 0.55);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.exposition:hover {
+  border-color: rgba(214, 179, 138, 0.8);
+  transform: translateY(-4px);
+}
+
+.exposition__image {
+  overflow: hidden;
+}
+
+.exposition__image img {
+  width: 100%;
+  aspect-ratio: 313 / 347;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.exposition:hover .exposition__image img {
+  transform: scale(1.04);
+}
+
+.exposition__statut {
+  margin-top: 4px;
+  color: var(--cuivre);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.exposition__titre {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.exposition__theme {
+  color: var(--ivoire);
+  font-family: var(--police-titre);
+  font-size: 17px;
+  font-style: italic;
+}
+
+.exposition__dates {
+  color: var(--ivoire);
+  font-size: 13px;
+}
+
+.exposition .bouton,
+.exposition .lien-fleche {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.contact {
+  background-color: var(--bleu-nuit);
+}
+
+.contact__presentation {
+  padding: 48px 24px 32px;
+}
+
+.contact__surtitre {
+  color: var(--cuivre);
+}
+
+.contact__titre {
+  margin-top: 12px;
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.contact__sous-titre {
+  margin-top: 12px;
+  color: var(--ivoire);
+  font-family: var(--police-titre);
+  font-size: 17px;
+  font-style: italic;
+}
+
+.contact__image {
+  height: 250px;
+  background: url("../images/galerie-contact.jpg") 85% center / cover no-repeat;
+}
+
+.contact__infos {
+  margin: 28px 24px 0;
+  border-top: 1px solid #46506a;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid #46506a;
+}
+
+.info dt {
+  color: var(--cuivre);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.info dd {
+  color: var(--ivoire);
+  font-size: 13px;
+}
+
+.info address {
+  font-style: normal;
+}
+
+.info a {
+  transition: color var(--transition);
+}
+
+.info a:hover,
+.info a:focus-visible {
+  color: var(--cuivre);
+}
+
+.contact__formulaire {
+  padding: 32px 24px 56px;
+}
+
+.formulaire {
+  padding: 30px 20px;
+  border: 1px solid rgba(214, 179, 138, 0.45);
+  background-color: rgba(12, 18, 34, 0.88);
+}
+
+.formulaire__titre {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.formulaire__intro {
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.formulaire__alerte {
+  display: none;
+  margin-top: 18px;
+  padding: 9px 12px;
+  border: 1px solid var(--erreur);
+  background-color: rgba(240, 131, 124, 0.14);
+  color: var(--erreur);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.formulaire__alerte.est-visible {
+  display: block;
+  animation: fondu 0.3s ease;
+}
+
+.formulaire__ligne {
+  display: grid;
+  gap: 16px;
+}
+
+.champ {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.champ label,
+.formulaire__legende {
+  color: var(--ivoire);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.champ input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(231, 223, 214, 0.3);
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--ivoire);
+  font-family: var(--police-texte);
+  font-size: 14px;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.champ input::placeholder {
+  color: rgba(231, 223, 214, 0.55);
+}
+
+.champ input:hover {
+  border-color: rgba(231, 223, 214, 0.6);
+}
+
+.champ input:focus {
+  border-color: var(--cuivre);
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
+.champ__erreur {
+  display: none;
+  color: var(--erreur);
+  font-size: 11px;
+}
+
+.champ.est-en-erreur input {
+  border: 1.5px solid var(--erreur);
+}
+
+.champ.est-en-erreur .champ__erreur {
+  display: block;
+}
+
+.formulaire__choix {
+  margin: 18px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.formulaire__cases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 10px;
+}
+
+.case {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--ivoire);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.case input {
+  position: absolute;
+  opacity: 0;
+}
+
+.case__boite {
+  position: relative;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  border: 1px solid rgba(231, 223, 214, 0.6);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.case__boite::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--bleu-profond);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.case input:checked + .case__boite {
+  border-color: var(--cuivre);
+  background-color: var(--cuivre);
+}
+
+.case input:checked + .case__boite::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.case input:focus-visible + .case__boite {
+  outline: 2px solid var(--cuivre);
+  outline-offset: 2px;
+}
+
+.case--consentement {
+  margin-top: 18px;
+}
+
+.case--consentement.est-en-erreur {
+  color: var(--erreur);
+}
+
+.case--consentement.est-en-erreur .case__boite {
+  border-color: var(--erreur);
+}
+
+.formulaire .bouton--plein {
+  margin-top: 24px;
+}
+
+.formulaire__mention {
+  margin-top: 18px;
+  color: rgba(231, 223, 214, 0.7);
+  font-size: 11px;
+}
+
+.pied {
+  padding: 28px 24px;
+  border-top: 1px solid rgba(231, 223, 214, 0.12);
+  background-color: #0b0e14;
+  color: rgba(231, 223, 214, 0.7);
+  font-size: 11px;
+  text-align: center;
+}
+
+.pied__liens {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  margin-bottom: 12px;
+}
+
+.pied__liens a {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color var(--transition);
+}
+
+.pied__liens a:hover,
+.pied__liens a:focus-visible {
+  color: var(--cuivre);
+}
+
+.page-fiche {
+  min-height: 100vh;
+  background: linear-gradient(rgba(8, 12, 22, 0.85), rgba(8, 12, 22, 0.85)), url("../images/salle-collection.jpg") center / cover fixed no-repeat;
+  background-color: #080c16;
+}
+
+.fiche-conteneur {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 60px;
+}
+
+.fiche {
+  width: 100%;
+  max-width: 353px;
+  padding: 18px 20px 20px;
+  border: 1px solid rgba(214, 179, 138, 0.5);
+  background-color: var(--bleu-profond);
+  animation: ouverture-fiche 0.6s ease both;
+}
+
+.fiche__barre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fiche__numero,
+.fiche__fermer,
+.fiche__navigation a,
+.fiche__retour {
+  color: var(--ivoire);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.fiche__fermer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--transition);
+}
+
+.fiche__fermer i {
+  font-size: 13px;
+  transition: transform var(--transition);
+}
+
+.fiche__fermer:hover,
+.fiche__fermer:focus-visible {
+  color: var(--cuivre);
+}
+
+.fiche__fermer:hover i {
+  transform: rotate(90deg);
+}
+
+.fiche__corps {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.fiche__image {
+  width: 240px;
+  margin: 0 auto;
+  border: 1px solid var(--cuivre);
+}
+
+.fiche__image img {
+  width: 100%;
+  aspect-ratio: 330 / 366;
+  object-fit: cover;
+}
+
+.fiche__cartel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fiche__artiste {
+  color: var(--cuivre);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.fiche__titre {
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.fiche__infos {
+  border-top: 1px solid var(--ligne);
+}
+
+.fiche__infos div {
+  display: grid;
+  grid-template-columns: 105px 1fr;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--ligne);
+}
+
+.fiche__infos dt {
+  color: var(--cuivre);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fiche__infos dd {
+  color: var(--ivoire);
+  font-size: 12px;
+}
+
+.fiche__description {
+  color: var(--ivoire);
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+.fiche__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.fiche__actions .bouton {
+  width: 100%;
+}
+
+.fiche__retour {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.14em;
+  transition: color var(--transition), gap var(--transition);
+}
+
+.fiche__retour:hover,
+.fiche__retour:focus-visible {
+  gap: 12px;
+  color: var(--cuivre);
+}
+
+.fiche__navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ligne);
+}
+
+.fiche__navigation a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition);
+}
+
+.fiche__navigation a:hover,
+.fiche__navigation a:focus-visible {
+  color: var(--cuivre);
+}
+
+.fiche__navigation .fiche__numero {
+  display: none;
+}
+
+.texte-desktop {
+  display: none;
+}
+
+.page-merci {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.merci {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px;
+  background: linear-gradient(90deg, rgba(11, 16, 30, 0.86), rgba(11, 16, 30, 0.6)), url("../images/galerie-contact.jpg") center / cover no-repeat;
+}
+
+.merci__carte {
+  width: 100%;
+  max-width: 500px;
+  padding: 40px 28px;
+  border: 1px solid rgba(214, 179, 138, 0.45);
+  background-color: rgba(12, 18, 34, 0.9);
+  text-align: center;
+  animation: ouverture-fiche 0.7s ease both;
+}
+
+.merci__icone {
+  color: var(--cuivre);
+  font-size: 54px;
+}
+
+.merci__titre {
+  margin-top: 20px;
+  color: var(--blanc);
+  font-family: var(--police-titre);
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.merci__message {
+  margin-top: 14px;
+  color: var(--ivoire);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.merci__liens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+@media (min-width: 600px) {
+  .accueil__contenu,
+  .oeuvres > *,
+  .galerie > *,
+  .expositions > *,
+  .contact__presentation,
+  .contact__infos,
+  .contact__formulaire {
+    max-width: 640px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .contact__infos {
+    width: calc(100% - 48px);
+  }
+
+  .accueil__titre,
+  .oeuvres__titre,
+  .expositions__titre {
+    font-size: 44px;
+  }
+
+  .accueil__image {
+    height: 380px;
+  }
+
+  .oeuvres__grille {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .galerie__portrait {
+    max-width: 400px;
+  }
+
+  .galerie__roles {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .role {
+    flex: 1;
+  }
+
+  .expositions__liste {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .formulaire {
+    padding: 34px 33px;
+  }
+
+  .formulaire__ligne {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fiche {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --u: calc(100vw / 1440);
+    --hauteur-entete: 0px;
+  }
+
+    .entete {
+    position: fixed;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100 * var(--u));
+    padding: 0 calc(47 * var(--u)) 0 calc(65 * var(--u));
+    background-color: transparent;
+  }
+
+  .entete.est-defilee {
+    background-color: rgba(16, 19, 25, 0.94);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .entete__barre {
+    display: contents;
+  }
+
+  .logo {
+    gap: calc(15 * var(--u));
+  }
+
+  .logo__symbole {
+    width: calc(64 * var(--u));
+    height: calc(64 * var(--u));
+  }
+
+  .logo__nom {
+    font-size: calc(26 * var(--u));
+    letter-spacing: 0.1em;
+  }
+
+  .logo__sous-titre {
+    margin-top: calc(8 * var(--u));
+    font-size: calc(8 * var(--u));
+  }
+
+  .entete__inscription {
+    order: 3;
+    padding: calc(10 * var(--u)) calc(20 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .entete__inscription .texte-court {
+    display: none;
+  }
+
+  .entete__inscription .texte-long {
+    display: inline;
+  }
+
+  .navigation {
+    order: 2;
+    margin-left: auto;
+    margin-right: calc(40 * var(--u));
+    border: 0;
+  }
+
+  .navigation__liste {
+    gap: calc(40 * var(--u));
+    padding: 0;
+    overflow: visible;
+  }
+
+  .navigation__lien {
+    padding-bottom: 0;
+    font-size: calc(14 * var(--u));
+    letter-spacing: 0.1em;
+  }
+
+  .navigation__lien::after {
+    bottom: calc(-7 * var(--u));
+  }
+
+    .accueil,
+  .oeuvres,
+  .galerie,
+  .expositions,
+  .contact {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .accueil > *,
+  .oeuvres > *,
+  .galerie > *,
+  .expositions > *,
+  .contact > * {
+    position: absolute;
+    max-width: none;
+    margin: 0;
+  }
+
+    .accueil {
+    aspect-ratio: 1440 / 700;
+    background: url("../images/hero-galerie.jpg") center / cover no-repeat;
+  }
+
+  .accueil__image {
+    display: none;
+  }
+
+  .accueil__contenu {
+    top: calc(249 * var(--u));
+    left: calc(100 * var(--u));
+    gap: 0;
+    padding: 0;
+  }
+
+  .accueil__surtitre {
+    font-size: calc(14 * var(--u));
+  }
+
+  .accueil__titre {
+    margin-top: calc(44 * var(--u));
+    font-size: calc(56 * var(--u));
+    line-height: 1.34;
+  }
+
+  .accueil__accroche {
+    margin-top: calc(35 * var(--u));
+    font-size: calc(15 * var(--u));
+    line-height: 1.2;
+  }
+
+  .accueil .bouton {
+    margin-top: calc(37 * var(--u));
+    padding: calc(12 * var(--u)) calc(21 * var(--u));
+    font-size: calc(14 * var(--u));
+  }
+
+  .accueil__infos {
+    margin-top: calc(21 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .accueil__defiler {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(8 * var(--u));
+    margin-top: calc(19 * var(--u));
+    color: var(--ivoire);
+    font-size: calc(10 * var(--u));
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    opacity: 0.65;
+    transition: opacity var(--transition);
+    animation: monter 0.9s 0.75s ease both;
+  }
+
+  .accueil__defiler i {
+    font-size: calc(9 * var(--u));
+    animation: rebond 1.8s ease-in-out infinite;
+  }
+
+  .accueil__defiler:hover,
+  .accueil__defiler:focus-visible {
+    opacity: 1;
+  }
+
+    .oeuvres {
+    aspect-ratio: 1440 / 800;
+    background: url("../images/salle-collection.jpg") center / cover no-repeat;
+  }
+
+  .oeuvres__entete {
+    top: calc(126 * var(--u));
+    left: calc(48 * var(--u));
+    width: calc(400 * var(--u));
+    gap: 0;
+  }
+
+  .oeuvres__surtitre {
+    font-size: calc(12 * var(--u));
+  }
+
+  .oeuvres__titre {
+    margin-top: calc(19 * var(--u));
+    margin-left: calc(-3 * var(--u));
+    font-size: calc(56 * var(--u));
+  }
+
+  .oeuvres__intro {
+    width: calc(380 * var(--u));
+    margin: calc(75 * var(--u)) 0 0 calc(7 * var(--u));
+    font-size: calc(19 * var(--u));
+    line-height: 1.32;
+  }
+
+  .oeuvres__entete .filet {
+    margin: calc(32 * var(--u)) 0 0 calc(7 * var(--u));
+  }
+
+  .oeuvres__indication {
+    margin: calc(14 * var(--u)) 0 0 calc(7 * var(--u));
+    font-size: calc(13 * var(--u));
+  }
+
+  .oeuvres__nombre {
+    margin: calc(10 * var(--u)) 0 0 calc(7 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+    .oeuvres__grille {
+    inset: 0;
+    display: block;
+    margin: 0;
+  }
+
+  .oeuvres__grille li {
+    position: absolute;
+    width: 12.77%;
+    height: 25.5%;
+  }
+
+  .oeuvres__grille li:nth-child(1),
+  .oeuvres__grille li:nth-child(4) {
+    left: 32.88%;
+  }
+
+  .oeuvres__grille li:nth-child(2),
+  .oeuvres__grille li:nth-child(5) {
+    left: 50.11%;
+  }
+
+  .oeuvres__grille li:nth-child(3),
+  .oeuvres__grille li:nth-child(6) {
+    left: 66.56%;
+  }
+
+  .oeuvres__grille li:nth-child(-n + 3) {
+    top: 7.5%;
+  }
+
+  .oeuvres__grille li:nth-child(n + 4) {
+    top: 37.25%;
+  }
+
+  .oeuvre {
+    height: 100%;
+    box-shadow: none;
+  }
+
+  .oeuvre img {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .oeuvre__bandeau {
+    padding: calc(5 * var(--u)) calc(10 * var(--u)) calc(7 * var(--u));
+  }
+
+  .oeuvre__titre {
+    font-size: calc(13 * var(--u));
+  }
+
+  .oeuvre__voir {
+    font-size: calc(9 * var(--u));
+  }
+
+  .oeuvres__artistes {
+    top: calc(640 * var(--u));
+    left: calc(336 * var(--u));
+    width: calc(724 * var(--u));
+    gap: calc(8 * var(--u));
+  }
+
+  .oeuvres__artistes .surtitre {
+    margin-left: calc(-216 * var(--u));
+    font-size: calc(10 * var(--u));
+  }
+
+  .oeuvres__noms {
+    font-size: calc(26 * var(--u));
+    line-height: 1.35;
+  }
+
+  .oeuvres__noms li + li::before {
+    content: "\00a0\00a0\00a0·\00a0\00a0\00a0";
+  }
+
+  .oeuvres__artistes .filet {
+    width: calc(360 * var(--u));
+    height: 1px;
+    margin: calc(12 * var(--u)) 0 0 calc(-216 * var(--u));
+    background: linear-gradient(90deg, var(--cuivre) 44.4%, transparent 44.4%, transparent 55.6%, var(--cuivre) 55.6%);
+  }
+
+    .galerie {
+    height: calc(810 * var(--u));
+    background: linear-gradient(90deg, rgba(247, 242, 234, 0) 39%, rgba(247, 242, 234, 0.8) 44%, rgba(247, 242, 234, 0.8) 78%, rgba(247, 242, 234, 0) 83%), url("../images/galerie-lumineuse.jpg") center / cover no-repeat;
+  }
+
+    .galerie__portrait {
+    position: absolute;
+    top: 0;
+    left: calc(-530 * var(--u));
+    width: calc(400 * var(--u));
+    max-width: none;
+    margin: 0;
+  }
+
+  .galerie__cadre::before {
+    top: calc(16 * var(--u));
+    left: calc(16 * var(--u));
+  }
+
+  .galerie__portrait figcaption {
+    margin-top: calc(30 * var(--u));
+    font-size: calc(15 * var(--u));
+  }
+
+  .galerie__texte {
+    top: calc(130 * var(--u));
+    left: calc(640 * var(--u));
+    width: calc(520 * var(--u));
+  }
+
+  .galerie__surtitre {
+    font-size: calc(12 * var(--u));
+  }
+
+  .galerie__titre {
+    margin-top: calc(9 * var(--u));
+    font-size: calc(50 * var(--u));
+    line-height: 1.34;
+    white-space: nowrap;
+  }
+
+  .galerie__sous-titre {
+    margin-top: calc(4 * var(--u));
+    font-size: calc(22 * var(--u));
+  }
+
+  .galerie__presentation {
+    width: calc(450 * var(--u));
+    margin-top: calc(22 * var(--u));
+    font-size: calc(15 * var(--u));
+    line-height: 1.66;
+  }
+
+  .galerie__roles {
+    flex-direction: row;
+    gap: calc(20 * var(--u));
+    width: calc(453 * var(--u));
+    margin-top: calc(5 * var(--u));
+  }
+
+  .role {
+    flex: 0 0 calc(136 * var(--u));
+    padding-top: calc(14 * var(--u));
+  }
+
+  .role:nth-child(2) {
+    flex-basis: calc(141 * var(--u));
+  }
+
+  .role__titre {
+    font-size: calc(21 * var(--u));
+  }
+
+  .role__texte {
+    margin-top: calc(8 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .galerie .bouton {
+    align-self: flex-start;
+    margin-top: calc(32 * var(--u));
+    padding: calc(10 * var(--u)) calc(20 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+    .expositions {
+    height: calc(810 * var(--u));
+    background: linear-gradient(rgba(40, 6, 14, 0.42), rgba(40, 6, 14, 0.42)), url("../images/mur-expositions.jpg") center / cover no-repeat;
+  }
+
+  .expositions__statue {
+    top: 0;
+    right: 0;
+    display: block;
+    width: calc(280 * var(--u));
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+  }
+
+  .expositions__titre {
+    top: calc(72 * var(--u));
+    left: calc(118 * var(--u));
+    font-size: calc(52 * var(--u));
+    font-weight: 400;
+  }
+
+  .expositions__intro {
+    top: calc(144 * var(--u));
+    left: calc(118 * var(--u));
+    font-size: calc(20 * var(--u));
+  }
+
+  .expositions__liste {
+    top: calc(215 * var(--u));
+    left: calc(118 * var(--u));
+    grid-template-columns: repeat(3, calc(310 * var(--u)));
+    gap: calc(30 * var(--u));
+  }
+
+  .exposition {
+    gap: calc(10 * var(--u));
+    height: calc(518 * var(--u));
+    padding: calc(20 * var(--u));
+    background-color: rgba(20, 8, 16, 0.72);
+  }
+
+  .exposition__image img {
+    aspect-ratio: 270 / 300;
+  }
+
+  .exposition__statut {
+    font-size: calc(11 * var(--u));
+  }
+
+  .exposition__titre {
+    font-size: calc(28 * var(--u));
+  }
+
+  .exposition__theme {
+    font-size: calc(18 * var(--u));
+  }
+
+  .exposition__dates {
+    font-size: calc(14 * var(--u));
+  }
+
+  .exposition .bouton {
+    padding: calc(10 * var(--u)) calc(20 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .exposition .lien-fleche {
+    font-size: calc(11 * var(--u));
+  }
+
+    .contact {
+    height: calc(810 * var(--u));
+    background: linear-gradient(90deg, rgba(11, 16, 30, 0.86) 0%, rgba(11, 16, 30, 0.86) 39%, rgba(11, 16, 30, 0) 80%), url("../images/galerie-contact.jpg") center / cover no-repeat;
+  }
+
+  .contact__image {
+    display: none;
+  }
+
+  .contact__presentation {
+    top: calc(120 * var(--u));
+    left: calc(120 * var(--u));
+    padding: 0;
+  }
+
+  .contact__surtitre {
+    font-size: calc(12 * var(--u));
+  }
+
+  .contact__titre {
+    margin: calc(7 * var(--u)) 0 0 calc(-2 * var(--u));
+    font-size: calc(52 * var(--u));
+  }
+
+  .contact__sous-titre {
+    margin-top: calc(6 * var(--u));
+    font-size: calc(20 * var(--u));
+  }
+
+  .contact__infos {
+    top: calc(348 * var(--u));
+    left: calc(120 * var(--u));
+    width: calc(380 * var(--u));
+  }
+
+  .info {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    height: calc(46 * var(--u));
+    padding: 0;
+  }
+
+  .info dt {
+    flex: 0 0 calc(120 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .info dd {
+    font-size: calc(14 * var(--u));
+  }
+
+  .contact__formulaire {
+    top: calc(110 * var(--u));
+    left: calc(620 * var(--u));
+    width: calc(500 * var(--u));
+    padding: 0;
+  }
+
+  .formulaire {
+    padding: calc(30 * var(--u)) calc(33 * var(--u)) calc(32 * var(--u));
+  }
+
+  .formulaire__titre {
+    font-size: calc(28 * var(--u));
+  }
+
+  .formulaire__intro {
+    margin-top: calc(14 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .formulaire__alerte {
+    margin-top: calc(12 * var(--u));
+    padding: calc(8 * var(--u)) calc(12 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .formulaire__ligne {
+    grid-template-columns: 1fr 1fr;
+    gap: calc(16 * var(--u));
+  }
+
+  .champ {
+    gap: calc(8 * var(--u));
+    margin-top: calc(18 * var(--u));
+  }
+
+  .champ label,
+  .formulaire__legende {
+    font-size: calc(12 * var(--u));
+  }
+
+  .champ input {
+    height: calc(44 * var(--u));
+    padding: 0 calc(14 * var(--u));
+    font-size: calc(14 * var(--u));
+  }
+
+  .champ__erreur {
+    font-size: calc(11 * var(--u));
+  }
+
+  .formulaire__choix {
+    margin-top: calc(22 * var(--u));
+  }
+
+  .formulaire__cases {
+    gap: calc(22 * var(--u));
+    margin-top: calc(10 * var(--u));
+  }
+
+  .case {
+    font-size: calc(12 * var(--u));
+  }
+
+  .case--consentement {
+    margin-top: calc(18 * var(--u));
+  }
+
+  .formulaire .bouton--plein {
+    margin-top: calc(18 * var(--u));
+    padding: calc(14 * var(--u)) calc(20 * var(--u));
+    font-size: calc(12 * var(--u));
+  }
+
+  .formulaire__mention {
+    margin-top: calc(18 * var(--u));
+    font-size: calc(11 * var(--u));
+  }
+
+    .pied {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px calc(120 * var(--u));
+    text-align: left;
+  }
+
+  .pied__liens {
+    order: 2;
+    margin: 0;
+  }
+
+    .page-fiche .entete {
+    background-color: rgba(16, 19, 25, 0.94);
+  }
+
+  .fiche-conteneur {
+    min-height: 100vh;
+    align-items: center;
+    padding: calc(120 * var(--u)) 20px 40px;
+  }
+
+  .fiche {
+    position: relative;
+    max-width: 1000px;
+    padding: 26px 50px 26px;
+  }
+
+  .fiche__barre {
+    justify-content: flex-end;
+  }
+
+  .fiche__barre .fiche__numero {
+    display: none;
+  }
+
+  .fiche__corps {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 32px;
+  }
+
+  .fiche__image {
+    flex: 0 0 330px;
+    width: 330px;
+    margin: 0;
+  }
+
+  .fiche__cartel {
+    flex: 1;
+    gap: 18px;
+    margin-top: 10px;
+  }
+
+  .fiche__artiste {
+    font-size: 11px;
+  }
+
+  .fiche__titre {
+    font-size: 40px;
+    line-height: 1.3;
+  }
+
+  .fiche__infos div {
+    grid-template-columns: 140px 1fr;
+    padding: 11px 0;
+  }
+
+  .fiche__infos dt {
+    font-size: 12px;
+  }
+
+  .fiche__infos dd {
+    font-size: 13px;
+  }
+
+  .fiche__description {
+    font-size: 14px;
+    line-height: 1.64;
+  }
+
+  .fiche__actions {
+    flex-direction: row;
+    gap: 28px;
+    margin-top: 8px;
+  }
+
+  .fiche__actions .bouton {
+    width: auto;
+  }
+
+  .fiche__retour {
+    font-size: 11px;
+  }
+
+  .fiche__navigation {
+    margin-top: 46px;
+    padding-top: 19px;
+  }
+
+  .fiche__navigation .fiche__numero {
+    display: inline;
+  }
+
+  .texte-desktop {
+    display: inline;
+  }
+
+  .merci {
+    padding-top: calc(160 * var(--u));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js .apparition {
+    opacity: 1;
+    transform: none;
+  }
+}
